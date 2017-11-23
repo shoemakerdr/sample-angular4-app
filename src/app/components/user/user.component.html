@@ -6,7 +6,32 @@
     {{address.city}}, {{address.state}}
 </p>
 
-<button (click)='onClick()'>Click Me</button>
+<button (click)='onClick()'>Click for new hash code</button>
+<button (click)='toggleEdit()'>{{editButtonText}}</button>
+
+<div *ngIf=isEdit>
+<h2>Edit User</h2>
+    <form>
+        <div>
+            <input type='text' placeholder='Name' [(ngModel)]='name' name='name'>
+        </div>
+        <div>
+            <input type='number' placeholder='Age' [(ngModel)]='age' name='age'>
+        </div>
+        <div>
+            <input type='text' placeholder='Email' [(ngModel)]='email' name='email'>
+        </div>
+        <div>
+            <input type='text' placeholder='Street' [(ngModel)]='address.street' name='street'>
+        </div>
+        <div>
+            <input type='text' placeholder='City' [(ngModel)]='address.city' name='city'>
+        </div>
+        <div>
+            <input type='text' placeholder='State' [(ngModel)]='address.state' name='state'>
+        </div>
+    </form>
+</div>
 
 <h2>Hobbies</h2>
 <form (submit)='addHobby(hobby.value)'>
@@ -18,5 +43,13 @@
 <ul>
     <li *ngFor='let hobby of hobbies; let i = index'>
         {{i + 1}}: {{hobby}} <button (click)='deleteHobby(hobby)'>&times;</button>
+    </li>
+</ul>
+
+<h2>Posts</h2>
+<ul>
+    <li *ngFor='let post of posts'>
+        <h3>Post {{post.id}}: {{post.title}}, by user #{{post.userId}}</h3>
+        <p>{{post.body}}</p>
     </li>
 </ul>

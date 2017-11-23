@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
+import { DataService } from '../../services/data.service'
 
 @Component({
   selector: 'app-user',
@@ -12,8 +13,13 @@ export class UserComponent implements OnInit {
   address:Address
   hobbies:string[]
   hash:string
+  posts:Post[]
+  isEdit:boolean = false
+  editButtonText:string
 
-  constructor () {}
+  constructor (private dataService:DataService) {
+
+  }
 
   ngOnInit () {
     this.name = 'Derek Shoemaker'
@@ -26,6 +32,10 @@ export class UserComponent implements OnInit {
     }
     this.hobbies = ['Write code', 'Do improv','Listen to Fiona Apple']
     this.hash = this.newHash()
+    this.editButtonText = 'Edit User'
+    this.dataService.getPosts().subscribe(posts => {
+      this.posts = posts
+    })
   }
 
   onClick () {
@@ -45,10 +55,22 @@ export class UserComponent implements OnInit {
     const index = this.hobbies.indexOf(hobby)
     this.hobbies.splice(index, 1)
   }
+
+  toggleEdit () {
+    this.isEdit = !this.isEdit
+    this.editButtonText = this.isEdit ? 'Save User' : 'Edit User'
+  }
 }
 
 interface Address {
   street:string,
   city:string,
   state:string,
+}
+
+interface Post {
+  id:number,
+  title:string,
+  body:string,
+  userId:number,
 }
