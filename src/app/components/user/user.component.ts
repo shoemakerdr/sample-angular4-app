@@ -32,7 +32,6 @@ export class UserComponent implements OnInit {
         }
         this.hobbies = ['Write code', 'Do improv', 'Listen to Fiona Apple']
         this.hash = this.newHash()
-        this.editButtonText = 'Edit User'
         this.dataService.getPosts().subscribe(posts => {
             this.posts = posts
         })
@@ -58,7 +57,6 @@ export class UserComponent implements OnInit {
 
     toggleEdit() {
         this.isEdit = !this.isEdit
-        this.editButtonText = this.isEdit ? 'Save User' : 'Edit User'
     }
 }
 

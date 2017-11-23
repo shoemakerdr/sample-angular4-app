@@ -7,7 +7,7 @@
 </p>
 
 <button (click)='onClick()'>Click for new hash code</button>
-<button (click)='toggleEdit()'>{{editButtonText}}</button>
+<button (click)='toggleEdit()'>{{isEdit ? 'Save User' : 'Edit User'}}</button>
 
 <div *ngIf=isEdit>
 <h2>Edit User</h2>
