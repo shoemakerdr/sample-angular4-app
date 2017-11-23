@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { FormsModule } from '@angular/forms'
+// HttpModule is being deprecated. Should now use
+// import { HttpClientModule } from '@angular/common/http'
 import { HttpModule } from '@angular/http'
 import { RouterModule, Routes } from '@angular/router'
 
