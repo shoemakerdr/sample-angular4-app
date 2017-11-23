@@ -1,0 +1,22 @@
+<h1>My name is {{name}}, and I am {{age}} years old.</h1>
+<h2>Hash code: {{hash}}</h2>
+<p>email: {{email}}</p>
+<p>
+    {{address.street}}<br>
+    {{address.city}}, {{address.state}}
+</p>
+
+<button (click)='onClick()'>Click Me</button>
+
+<h2>Hobbies</h2>
+<form (submit)='addHobby(hobby.value)'>
+    <div>
+        <label for='hobby'>Hobby</label>
+        <input type='text' #hobby>
+    </div>
+</form>
+<ul>
+    <li *ngFor='let hobby of hobbies; let i = index'>
+        {{i + 1}}: {{hobby}} <button (click)='deleteHobby(hobby)'>&times;</button>
+    </li>
+</ul>
